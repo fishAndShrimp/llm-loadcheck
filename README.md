@@ -3,7 +3,7 @@
 Datasets and tools for checking LLM weight loading, starting with BF16 and
 ModelSlim checkpoints in SGLang.
 
-This first release contains **45 metadata snapshots from ModelScope**: 44 selected
+The dataset contains **53 metadata snapshots from ModelScope**: 52 selected
 Eco-Tech quantized checkpoints and one official Qwen BF16 checkpoint. Each sample
 is pinned to a full source revision and stored as one ZIP. Full tensor payloads
 are not included.
@@ -23,7 +23,7 @@ python scripts/check_dataset.py
 ```
 
 This verifies all catalogue ZIPs and writes `.cache/structure-check.json`.
-The included dataset should report 45 samples with structure status `PASS`.
+The included dataset should report 53 samples with structure status `PASS`.
 
 The two scripts have distinct roles:
 

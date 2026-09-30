@@ -541,6 +541,102 @@
       "unpacked_bytes": 45148134,
       "files": 170,
       "tensors": 139396
+    },
+    {
+      "source": "modelscope",
+      "repo_id": "Eco-Tech/DeepSeek-V3-0324-w4a8-mtp-QuaRot",
+      "revision": "4599d1da83aa4b6f7e9252f58341d9c3d80c8289",
+      "variant": "default",
+      "archive": "data/modelscope/Eco-Tech/DeepSeek-V3-0324-w4a8-mtp-QuaRot/4599d1da83aa.zip",
+      "sha256": "38d6dea888f3f9e4928564aadfb40a58c44fd5c38553f16fdfbd3cb29e23f2b2",
+      "archive_bytes": 3009134,
+      "unpacked_bytes": 56104130,
+      "files": 95,
+      "tensors": 182219
+    },
+    {
+      "source": "modelscope",
+      "repo_id": "Eco-Tech/DeepSeek-V3-0324-w4a8c8-mtp-QuaRot",
+      "revision": "21084ca5dc30ec02d06812f2ebc277cdb59462cf",
+      "variant": "default",
+      "archive": "data/modelscope/Eco-Tech/DeepSeek-V3-0324-w4a8c8-mtp-QuaRot/21084ca5dc30.zip",
+      "sha256": "4dab4fb6f6a397f083b89a4149c8e8b9bded60cf14269bbe5074b1ae1e7ce3d4",
+      "archive_bytes": 3027495,
+      "unpacked_bytes": 56283515,
+      "files": 95,
+      "tensors": 182901
+    },
+    {
+      "source": "modelscope",
+      "repo_id": "Eco-Tech/DeepSeek-V3-0324-w8a8-mtp-QuaRot",
+      "revision": "33083ef972aadc61cfe4935cddf5cda2f1b9d03c",
+      "variant": "default",
+      "archive": "data/modelscope/Eco-Tech/DeepSeek-V3-0324-w8a8-mtp-QuaRot/33083ef972aa.zip",
+      "sha256": "b13377031b860d271b6888e72a54f1c228ab1a1abcfb36e3578e1c61523fd6bb",
+      "archive_bytes": 2394626,
+      "unpacked_bytes": 45068805,
+      "files": 170,
+      "tensors": 139102
+    },
+    {
+      "source": "modelscope",
+      "repo_id": "Eco-Tech/DeepSeek-V3-0324-w8a8c8-mtp-QuaRot",
+      "revision": "6f0313352c2f27a8d6cf24072493126cd16aac02",
+      "variant": "default",
+      "archive": "data/modelscope/Eco-Tech/DeepSeek-V3-0324-w8a8c8-mtp-QuaRot/6f0313352c2f.zip",
+      "sha256": "e9a8eada47cb939814417b34300068b0d9dd7b7335afb8bba85726c120490944",
+      "archive_bytes": 2402950,
+      "unpacked_bytes": 45147216,
+      "files": 169,
+      "tensors": 139396
+    },
+    {
+      "source": "modelscope",
+      "repo_id": "Eco-Tech/DeepSeek-V3-w4a8-mtp-QuaRot",
+      "revision": "f7ae96b502e655a98c02e64bcac8802617a4ef27",
+      "variant": "default",
+      "archive": "data/modelscope/Eco-Tech/DeepSeek-V3-w4a8-mtp-QuaRot/f7ae96b502e6.zip",
+      "sha256": "be02906059392ed81b2acc969bd526fbca2f7fcd82561a22dd9b6a7acabc7e24",
+      "archive_bytes": 3009307,
+      "unpacked_bytes": 56104435,
+      "files": 95,
+      "tensors": 182219
+    },
+    {
+      "source": "modelscope",
+      "repo_id": "Eco-Tech/DeepSeek-V3-w4a8c8-mtp-QuaRot",
+      "revision": "f422153f07050967fc19e9d68b3e9af468ebbd77",
+      "variant": "default",
+      "archive": "data/modelscope/Eco-Tech/DeepSeek-V3-w4a8c8-mtp-QuaRot/f422153f0705.zip",
+      "sha256": "00c7801b7322bdc93043c892942cc409cccfee5ccb1b60434a1ab8c3dc754e41",
+      "archive_bytes": 3027231,
+      "unpacked_bytes": 56282191,
+      "files": 95,
+      "tensors": 182901
+    },
+    {
+      "source": "modelscope",
+      "repo_id": "Eco-Tech/DeepSeek-V3-w8a8-mtp-QuaRot",
+      "revision": "956b37165bd1c07e551c9a7a448a59fb0d85adff",
+      "variant": "default",
+      "archive": "data/modelscope/Eco-Tech/DeepSeek-V3-w8a8-mtp-QuaRot/956b37165bd1.zip",
+      "sha256": "042f34e95eb3ebbfaa0e25ed238be7adc99eba5a98c4a998114764dbb12658e1",
+      "archive_bytes": 2394097,
+      "unpacked_bytes": 45065871,
+      "files": 169,
+      "tensors": 139102
+    },
+    {
+      "source": "modelscope",
+      "repo_id": "Eco-Tech/DeepSeek-V3-w8a8c8-mtp-QuaRot",
+      "revision": "44e35b7b38bcb74c91a0967a23910a66414f9c0f",
+      "variant": "default",
+      "archive": "data/modelscope/Eco-Tech/DeepSeek-V3-w8a8c8-mtp-QuaRot/44e35b7b38bc.zip",
+      "sha256": "e3ac06d68dac96f0176259ea421bf4451eb4c772722400a76b3f73a486c8db2e",
+      "archive_bytes": 2402664,
+      "unpacked_bytes": 45145884,
+      "files": 169,
+      "tensors": 139396
     }
   ]
 }
