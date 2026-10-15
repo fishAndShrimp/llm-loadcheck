@@ -3,14 +3,14 @@
 Datasets and tools for checking LLM weight loading, starting with BF16 and
 ModelSlim checkpoints in SGLang.
 
-The dataset contains **53 metadata snapshots from ModelScope**: 52 selected
-Eco-Tech quantized checkpoints and one official Qwen BF16 checkpoint. Each sample
-is pinned to a full source revision and stored as one ZIP. Full tensor payloads
-are not included.
+The dataset contains metadata snapshots from ModelScope for selected Eco-Tech
+quantized checkpoints and official original checkpoints. Each sample is pinned
+to a full source revision and stored as one ZIP. Full tensor payloads are not
+included.
 
 The [sample catalogue](manifests/samples.json) lists every repository, revision,
 variant, archive path, compressed/expanded size and SHA-256. Quantized samples come
-from Eco-Tech; the BF16 baseline comes from the original publisher, Qwen. Publisher
+from Eco-Tech; original baselines come from their official publishers. Publisher
 selection does not imply that every checkpoint from that account is supported.
 
 ## Verify the dataset
@@ -23,7 +23,10 @@ python scripts/check_dataset.py
 ```
 
 This verifies all catalogue ZIPs and writes `.cache/structure-check.json`.
-The included dataset should report 53 samples with structure status `PASS`.
+The strict checker retains upstream inconsistencies as failures. Samples with a
+recorded `index_total_size_mismatch` still report structure status `FAIL` and
+produce exit code 1; inspect their original errors and manifest annotations.
+Packaging such a sample does not turn the discrepancy into a structural `PASS`.
 
 The two scripts have distinct roles:
 
@@ -36,6 +39,57 @@ These are offline metadata checks. A structural `PASS` does not establish correc
 model loading, quantization behavior, numerical accuracy or device inference.
 Header hashes do not verify tensor payloads; upstream full-weight hashes are
 recorded without claiming independent verification.
+
+## Known issues and mapping checks
+
+A sample can be useful for mapping checks even when it has an upstream metadata
+issue or cannot yet be published. Keep these decisions separate:
+
+| Category | Meaning | Effect on mapping checks |
+| --- | --- | --- |
+| Total size mismatch | Index `total_size` differs from the bytes calculated from headers. | This discrepancy alone does not block mapping checks when the full header inventory and index-to-header name coverage pass. Preserve the discrepancy. |
+| Missing shard | An index references a file absent from the pinned source inventory. | Review the actual loading path, including old indexes and TP subdirectories; do not claim full coverage of missing inputs. |
+| Component scope unresolved | Config declares MTP or another component that has not been matched to header entries. | Limit any test to a verified scope; do not claim complete component coverage. |
+| Invalid or incomplete headers | A header is malformed or only part of the required inventory was acquired. | Blocks a complete mapping check. |
+| Configuration conflict | Config, quantization metadata or export descriptions disagree about the model or precision. | Resolve the configuration used by the loader before interpreting results. |
+| Publication concern | License information or original upstream names need an explicit review note. | Does not itself block mapping checks. Record the concern and packaging decision without rewriting source files or inventing a license. |
+| Archive format limitation | Required source files are retained locally but are not accepted by the ZIP format. | Separate from mapping correctness; the test still needs the appropriate configuration and loading entry point. Do not execute source code automatically. |
+| Source unavailable or unconfirmed | The source cannot be accessed, or its identity/revision is not established. | Blocks a reproducible complete sample. |
+
+A sample may have more than one issue. Record each issue against the exact source,
+repository and full revision, with its explanation and evidence. For a size
+mismatch, retain both the declared and calculated values. A source defect is not
+proof of a collection error or a loader bug.
+
+For packaged samples, the authoritative annotations live in `manifest.json`
+inside each ZIP. The external `manifests/samples.json` catalogue pins that ZIP by
+SHA-256; it does not maintain a second copy of the annotations.
+The README defines the categories; reports retain evidence and present summaries.
+Do not duplicate manually maintained labels in directory names, ZIP names or
+separate tag files. Preserve original metadata and headers unchanged. Framework
+results belong in test reports with the framework commit and tested scope;
+"eligible for testing" never means "mapping passed".
+
+The annotated samples use these additive manifest fields:
+
+- `known_issues`: issue code, explanation, `mapping_impact`, and evidence paths
+  with SHA-256 hashes. Size discrepancies also record `index_path`,
+  `declared_bytes` and `observed_bytes`. Missing license files and differences
+  between model-card descriptions and repository names are recorded separately.
+- `offline_review`: the original strict structure status and errors, packaging
+  status, and loading status `NOT_RUN`. `NO_BLOCKER_FROM_RECORDED_ISSUES` means
+  only that these specific issues do not preclude mapping diagnostics; it does
+  not certify detector support or correct loading.
+- `packaging_policy.preserve_collected_files`: all collected configs, headers,
+  model cards and recipes are retained byte for byte. The acquisition file
+  records and source inventory are unchanged. Inventory-only payloads stay
+  inventory-only; no full weight data is added.
+
+The local packer admits a size discrepancy only when the annotation matches the
+original index hash, declared size and independently recalculated header bytes,
+and the strict checker has no other errors or unsupported data. Publication
+notes cannot waive structural errors. The public strict checker is unchanged;
+annotations do not suppress its failures. Existing unannotated ZIPs are unchanged.
 
 ## Sample format
 
