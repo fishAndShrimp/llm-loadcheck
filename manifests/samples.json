@@ -2413,6 +2413,18 @@
       "unpacked_bytes": 20985883,
       "files": 174,
       "tensors": 91991
+    },
+    {
+      "source": "modelscope",
+      "repo_id": "Eco-Tech/MiniMax-M2.7-eagle-model-short",
+      "revision": "631785deb87c0793f6fc47d89c8de84c2a60e57c",
+      "variant": "default",
+      "archive": "data/modelscope/Eco-Tech/MiniMax-M2.7-eagle-model-short/631785deb87c.zip",
+      "sha256": "cfadef8b8ef88547e106cddef22e34b1410cca52db62bb8e13f9c63f9f80bc70",
+      "archive_bytes": 6052,
+      "unpacked_bytes": 14347,
+      "files": 7,
+      "tensors": 14
     }
   ]
 }
